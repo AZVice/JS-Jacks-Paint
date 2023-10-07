@@ -1,24 +1,24 @@
 function configureListeners() {
-    let images = document.getElementsByTagName('img');// select img elements  
+    const images = document.getElementsByTagName('img');// select img elements  
 
 
-     for (var i = 0; i < images.length; i++) {        
-        images[i].id.addEventListener("mouseover", addOpacity, true)
-        images[i].id.addEventListener("mouseover", removeOpacity, true)// iterate over images and add mouseover event listeners      
+     for (let i = 0; i < images.length; i++) {        
+        images[i].addEventListener("mouseover", mouseOver, true);
+        images[i].addEventListener("mouseout", mouseOut, true);// iterate over images and add mouseover event listeners      
     } 
 }
 
-function mouseOver(event){
+function mouseOver(event) {
     const element = event.target;
-    if(element.classList.contains("dim")){
-
+    if (element.classList.contains("dim")) {
+        element.classList.add("dim");
     }
     getProductInfo(element.id);
 }
 
 function mouseOut(event) {
     const element = event.target;
-    if (element.classList.contains("dim")){
+    if (element.classList.contains("dim")) {
         element.classList.remove("dim");
     }
 
@@ -30,6 +30,35 @@ function mouseOut(event) {
 
     event.preventDefault();
 }
+
+function getProductInfo(paintColor) {
+    let colorInfo = {
+        "pn1":{price: "$14.99", colorName: "Lime Green"},
+        "pn2":{price: "$11.14", colorName: "Medium Brown"},
+        "pn3":{price: "$22.99", colorName: "Royal Blue"},
+        "pn4":{price: "$13.42", colorName: "Solid Red"},
+        "pn5":{price: "$21.98", colorName: "Solid White"},
+        "pn6":{price: "$4.99", colorName: "Solid Black"},
+        "pn7":{price: "$8.22", colorName: "Solid Cyan"},
+        "pn8":{price: "$11.99", colorName: "Solid Purple"},
+        "pn9":{price: "$14.99", colorName: "Solid Yellow"},
+    };
+    const info = colorInfo[paintColor] || {price: "N/A", colorName: "Unknown"};
+    updatePrice(info.price, info.colorName);
+}
+    
+function updatePrice(price, colorName) {
+           
+    let colorPrice = document.getElementById("color-price"); // select element with corresponding id
+    colorPrice.textContent = price;// display price
+        
+        let color = document.getElementById("color-name");// select element with corresponding id
+        color.textContent = colorName;//display color name
+}
+
+
+
+
 /*function addOpacity(event) {
     if (this.classList.contains(".dim")){
         this.classList.add(".dim")
@@ -53,12 +82,9 @@ function removeOpacity(event) {
     event.preventDefault();    
 }
 */
-function getProductInfo(paintColor) {
-    let price;
-    let colorName;
     //let updatePrice = updatePrice(colorName, price) 
     
-    switch (paintColor) {
+    /*switch (paintColor) {
         case 'pn1':
             price = "$14.99"
             colorName = "Line Green" 
@@ -106,14 +132,7 @@ function getProductInfo(paintColor) {
             break;   
           default:              
     }
+*/
 
-    function updatePrice(price, colorName){
-           
-        let colorPrice = document.getElementById("color-price"); // select element with corresponding id
-        colorPrice.textContent = price;// display price
-        
-        let color = document.getElementById("Color-name");// select element with corresponding id
-        color.textContent = colorName;//display color name
-    }
     
-}
+
