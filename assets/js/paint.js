@@ -3,15 +3,15 @@ function configureListeners() {
 
 
      for (let i = 0; i < images.length; i++) {        
-        images[i].addEventListener("mouseover", mouseOver, true);
-        images[i].addEventListener("mouseout", mouseOut, true);// iterate over images and add mouseover event listeners      
+        images[i].addEventListener("mouseover", mouseOver, true); // To add a mouseover event listener with mouseOver function 
+        images[i].addEventListener("mouseout", mouseOut, true);// To add a mouseout event listener with mouseOut function and iterate over images and add mouseover event listeners    
     } 
 }
 
 function mouseOver(event) {
     const element = event.target;
-    if (element.classList.contains("dim")) {
-        element.classList.add("dim");
+    if (element.classList.contains(".dim")) {
+        element.classList.add(".dim");
     }
     getProductInfo(element.id);
 }
@@ -23,7 +23,7 @@ function mouseOut(event) {
     }
 
     const colorPrice = document.getElementById("color-price");
-    colorPrice.textContent = " ";
+    colorPrice.textContent = "";
 
     const color = document.getElementById("color-name");
     color.textContent = "";
@@ -55,6 +55,46 @@ function updatePrice(price, colorName) {
         let color = document.getElementById("color-name");// select element with corresponding id
         color.textContent = colorName;//display color name
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
