@@ -3,8 +3,8 @@ function configureListeners() {
     
 
      for (let i = 0; i < images.length; i++) {        
-        images[i].addEventListener("mouseover", mouseOver, false); // To add a mouseover event listener with mouseOver function 
-        images[i].addEventListener("mouseout", mouseOut, false);// To add a mouseout event listener with mouseOut function and iterate over images and add mouseover event listeners    
+        images[i].addEventListener("mouseover", mouseOver); // To add a mouseover event listener with mouseOver function 
+        images[i].addEventListener("mouseout", mouseOut);// To add a mouseout event listener with mouseOut function and iterate over images and add mouseover event listeners    
     } 
 }
 
