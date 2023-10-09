@@ -1,25 +1,36 @@
 function configureListeners() {
-    const images = document.getElementsByTagName('img');// select img elements  
-
+    const images = document.getElementsByTagName('img');// select img elements 
+    
 
      for (let i = 0; i < images.length; i++) {        
-        images[i].addEventListener("mouseover", mouseOver, true); // To add a mouseover event listener with mouseOver function 
-        images[i].addEventListener("mouseout", mouseOut, true);// To add a mouseout event listener with mouseOut function and iterate over images and add mouseover event listeners    
+        images[i].addEventListener("mouseover", mouseOver, false); // To add a mouseover event listener with mouseOver function 
+        images[i].addEventListener("mouseout", mouseOut, false);// To add a mouseout event listener with mouseOut function and iterate over images and add mouseover event listeners    
     } 
 }
 
-function mouseOver(event) {
-    const element = event.target;
-    if (element.classList.contains(".dim")) {
-        element.classList.add(".dim");
+removeDim();
+
+
+function removeDim(){
+    const squares = document.getElementById("dim");
+    if(squares){
+        squares.classList.remove("dim")
     }
-    getProductInfo(element.id);
+}
+
+
+function mouseOver(event) {
+    const squares = event.target;
+    if (!squares.classList.contains("dim")) {
+        squares.classList.add("dim");
+    }
+    getProductInfo(squares.id);
 }
 
 function mouseOut(event) {
-    const element = event.target;
-    if (element.classList.contains("dim")) {
-        element.classList.remove("dim");
+    const squares = event.target;
+    if (squares.classList.contains("dim")) {
+        squares.classList.remove("dim");
     }
 
     const colorPrice = document.getElementById("color-price");
@@ -43,7 +54,7 @@ function getProductInfo(paintColor) {
         "pn8":{price: "$11.99", colorName: "Solid Purple"},
         "pn9":{price: "$14.99", colorName: "Solid Yellow"},
     };
-    const info = colorInfo[paintColor] || {price: "N/A", colorName: "Unknown"};
+    const info = colorInfo[paintColor] || {price: " ", colorName: " "};
     updatePrice(info.price, info.colorName);
 }
     
@@ -52,8 +63,8 @@ function updatePrice(price, colorName) {
     let colorPrice = document.getElementById("color-price"); // select element with corresponding id
     colorPrice.textContent = price;// display price
         
-        let color = document.getElementById("color-name");// select element with corresponding id
-        color.textContent = colorName;//display color name
+    let color = document.getElementById("color-name");// select element with corresponding id
+    color.textContent = colorName;//display color name
 }
 
 
