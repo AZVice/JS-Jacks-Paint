@@ -12,7 +12,7 @@ removeDim();
 
 
 function removeDim(){
-    const squares = document.getElementById("dim");
+    const squares = document.getElementByClassName("dim");
     if(squares){
         squares.classList.remove("dim")
     }
