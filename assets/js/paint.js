@@ -8,7 +8,7 @@ function configureListeners() {
     } 
 }
 
-removeDim();
+//removeDim();
 
 
 function removeDim(){
