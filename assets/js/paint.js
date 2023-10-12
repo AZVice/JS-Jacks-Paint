@@ -8,16 +8,6 @@ function configureListeners() {
     } 
 }
 
-//removeDim();
-
-
-function removeDim(){
-    const squares = document.getElementByClassName("dim");
-    if(squares){
-        squares.classList.remove("dim")
-    }
-}
-
 
 function mouseOver(event) {
     const squares = event.target;
